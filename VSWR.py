@@ -2,10 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 
-num_points = 4001
-dataset = np.genfromtxt(sys.argv[1], skip_header = 5)
+num_points = 4001 #maximum allowed points on VNA R&S
+dataset = np.genfromtxt(sys.argv[1], skip_header = 5) #first rows have technical data
 S11_abs = np.sqrt(np.add(np.square(dataset[:,1]), np.square(dataset[:,2]))) #Z^2 = sqrt (a^2 + b^2)
-VSWR = np.divide(1 + S11_abs, 1 - S11_abs)
+VSWR = np.divide(1 + S11_abs, 1 - S11_abs) #VSWR = (1+Z^2)/(1-Z^2)
 
 fig = plt.figure()
 fig.add_subplot(211)
